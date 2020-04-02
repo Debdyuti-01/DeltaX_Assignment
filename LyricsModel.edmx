@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="musicPlayerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="AlbumID" />
+          </Key>
+          <Property Name="AlbumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SongName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DateOfRelease" Type="date" Nullable="false" />
+          <Property Name="CoverImage" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MusicArist">
+          <Key>
+            <PropertyRef Name="MusicID" />
+          </Key>
+          <Property Name="MusicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Artistname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SongName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MusingFileName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Bio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+        </EntityType>
+        <Function Name="MusicAristFolder_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MusicID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_Album_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SongName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_AlbumFolder_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SongName" Type="varchar" Mode="In" />
+          <Parameter Name="DateOfRelease" Type="date" Mode="In" />
+          <Parameter Name="CoverImage" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_AlbumFolder_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SongName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_MusicAristFolder_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Artistname" Type="varchar" Mode="In" />
+          <Parameter Name="SongName" Type="varchar" Mode="In" />
+          <Parameter Name="MusingFileName" Type="varchar" Mode="In" />
+          <Parameter Name="Bio" Type="varchar" Mode="In" />
+          <Parameter Name="DateOfBirth" Type="date" Mode="In" />
+        </Function>
+        <Function Name="USP_MusicAristFolder_SelectALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SongName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_MusicAristFolder_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MusicID" Type="varchar" Mode="In" />
+          <Parameter Name="Artistname" Type="varchar" Mode="In" />
+          <Parameter Name="SongName" Type="varchar" Mode="In" />
+          <Parameter Name="MusingFileName" Type="varchar" Mode="In" />
+          <Parameter Name="Bio" Type="varchar" Mode="In" />
+          <Parameter Name="DateOfBirth" Type="date" Mode="In" />
+        </Function>
+        <EntityContainer Name="musicPlayerModelStoreContainer">
+          <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MusicArist" EntityType="Self.MusicArist" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="musicPlayerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="AlbumID" />
+          </Key>
+          <Property Name="AlbumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SongName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateOfRelease" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CoverImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MusicArist">
+          <Key>
+            <PropertyRef Name="MusicID" />
+          </Key>
+          <Property Name="MusicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Artistname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SongName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MusingFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="musicPlayerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Album" EntityType="Self.Album" />
+          <EntitySet Name="MusicArist" EntityType="Self.MusicArist" />
+          <FunctionImport Name="MusicAristFolder_Delete">
+            <Parameter Name="MusicID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_Album_Select" ReturnType="Collection(musicPlayerModel.USP_Album_Select_Result)">
+            <Parameter Name="SongName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_AlbumFolder_Insert" ReturnType="Collection(String)">
+            <Parameter Name="SongName" Mode="In" Type="String" />
+            <Parameter Name="DateOfRelease" Mode="In" Type="DateTime" />
+            <Parameter Name="CoverImage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_AlbumFolder_Select" ReturnType="Collection(musicPlayerModel.USP_AlbumFolder_Select_Result)">
+            <Parameter Name="SongName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_MusicAristFolder_Insert" ReturnType="Collection(String)">
+            <Parameter Name="Artistname" Mode="In" Type="String" />
+            <Parameter Name="SongName" Mode="In" Type="String" />
+            <Parameter Name="MusingFileName" Mode="In" Type="String" />
+            <Parameter Name="Bio" Mode="In" Type="String" />
+            <Parameter Name="DateOfBirth" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="USP_MusicAristFolder_SelectALL" ReturnType="Collection(musicPlayerModel.USP_MusicAristFolder_SelectALL_Result)">
+            <Parameter Name="SongName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_MusicAristFolder_Update" ReturnType="Collection(String)">
+            <Parameter Name="MusicID" Mode="In" Type="String" />
+            <Parameter Name="Artistname" Mode="In" Type="String" />
+            <Parameter Name="SongName" Mode="In" Type="String" />
+            <Parameter Name="MusingFileName" Mode="In" Type="String" />
+            <Parameter Name="Bio" Mode="In" Type="String" />
+            <Parameter Name="DateOfBirth" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="USP_Album_Select_Result">
+          <Property Type="Int32" Name="AlbumID" Nullable="false" />
+          <Property Type="String" Name="SongName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="CoverImage" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="USP_AlbumFolder_Select_Result">
+          <Property Type="Int32" Name="AlbumID" Nullable="false" />
+          <Property Type="String" Name="SongName" Nullable="false" MaxLength="200" />
+          <Property Type="DateTime" Name="DateOfRelease" Nullable="false" />
+          <Property Type="String" Name="CoverImage" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="USP_MusicAristFolder_SelectALL_Result">
+          <Property Type="Int32" Name="MusicID" Nullable="false" />
+          <Property Type="String" Name="Artistname" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="SongName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="MusingFileName" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Bio" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="musicPlayerModelStoreContainer" CdmEntityContainer="musicPlayerEntities">
+          <EntitySetMapping Name="Album">
+            <EntityTypeMapping TypeName="musicPlayerModel.Album">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="DateOfRelease" ColumnName="DateOfRelease" />
+                <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MusicArist">
+            <EntityTypeMapping TypeName="musicPlayerModel.MusicArist">
+              <MappingFragment StoreEntitySet="MusicArist">
+                <ScalarProperty Name="MusicID" ColumnName="MusicID" />
+                <ScalarProperty Name="Artistname" ColumnName="Artistname" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="MusingFileName" ColumnName="MusingFileName" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="MusicAristFolder_Delete" FunctionName="musicPlayerModel.Store.MusicAristFolder_Delete" />
+          <FunctionImportMapping FunctionImportName="USP_Album_Select" FunctionName="musicPlayerModel.Store.USP_Album_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="musicPlayerModel.USP_Album_Select_Result">
+                <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_AlbumFolder_Insert" FunctionName="musicPlayerModel.Store.USP_AlbumFolder_Insert" />
+          <FunctionImportMapping FunctionImportName="USP_AlbumFolder_Select" FunctionName="musicPlayerModel.Store.USP_AlbumFolder_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="musicPlayerModel.USP_AlbumFolder_Select_Result">
+                <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="DateOfRelease" ColumnName="DateOfRelease" />
+                <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_MusicAristFolder_Insert" FunctionName="musicPlayerModel.Store.USP_MusicAristFolder_Insert" />
+          <FunctionImportMapping FunctionImportName="USP_MusicAristFolder_SelectALL" FunctionName="musicPlayerModel.Store.USP_MusicAristFolder_SelectALL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="musicPlayerModel.USP_MusicAristFolder_SelectALL_Result">
+                <ScalarProperty Name="MusicID" ColumnName="MusicID" />
+                <ScalarProperty Name="Artistname" ColumnName="Artistname" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="MusingFileName" ColumnName="MusingFileName" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_MusicAristFolder_Update" FunctionName="musicPlayerModel.Store.USP_MusicAristFolder_Update" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
